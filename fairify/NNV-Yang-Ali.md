@@ -8,7 +8,11 @@ Later links are optimized for GitHub structure, therefore, please first open the
 
 ## Using ``α,β-CROWN``
 
-This part could be tested using online notebook, check the link [here](https://colab.research.google.com/drive/1Zn8KTXAbsBEpoAEsOXPAEqiaMmyO-vW0?usp=sharing). You could also check the local file [here](AB-CROWN-Report.ipynb). It's better to run this online.
+This part could be tested using online notebook, check the link [here](https://colab.research.google.com/drive/1Zn8KTXAbsBEpoAEsOXPAEqiaMmyO-vW0?usp=sharing). Motivation and summary are presented. 
+
+You could also check the local file [here](AB-CROWN-Report.ipynb). It's better to run this online.
+
+
 
 
 > For any problem please contact:
