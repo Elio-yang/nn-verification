@@ -27,4 +27,4 @@ Alireza Jafari, University of Virginia (jrp5td@virginia.edu)
 
 Credits are mentioned in both notebook file [here](https://colab.research.google.com/drive/1Zn8KTXAbsBEpoAEsOXPAEqiaMmyO-vW0?usp=sharing) and readme file [here](fairify/README.md).
 
-Thanks for authors created and released these tools, and thanks Prof. Elbaum for instruction duing this project.
+Thanks for the authors who created and released these tools, and thanks for Prof. Elbaum for instructions duing this project.
