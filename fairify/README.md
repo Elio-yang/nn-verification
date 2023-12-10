@@ -5,8 +5,8 @@
 
 # This Project 
 
-* Yang Yang, University of Virginia (xqg5sq@virginia.edu)
-* Alireza Jafari, University of Virginia (jrp5td@virginia.edu)
+* Yang Yang, University of Virginia (xqg5sq AT virginia.edu)
+* Alireza Jafari, University of Virginia (jrp5td AT virginia.edu)
 
 For any problem, please contact Yang.
 
@@ -207,7 +207,10 @@ For z3 implemented neural network operations (e.g. activation functions) could b
 
 ## Installation
 
-To run Fairify, we need to install Python 3 environment. The current version has been tested on Python 3.7. It is recommended to install Python virtual environment for the tool. Furthermore, we used bash shell scripts to automate running benchmark and Python scripts. Below are step-by-step instructions to setup environment and run the tool. 
+To run Fairify, we need to install Python 3 environment. The current version has been tested on Python 3.8. It is recommended to install Python virtual environment for the tool. Furthermore, we used bash shell scripts to automate running benchmark and Python scripts. Below are step-by-step instructions to setup environment and run the tool. 
+
+
+> For any problem, please contact Yang (xqg5sq AT virginia.edu)
 
 ### Environment Setup
 

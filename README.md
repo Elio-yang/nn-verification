@@ -11,9 +11,9 @@ You could also check the local file [here](AB-CROWN-Report.ipynb). It's better t
 
 > For any problem please contact:
 
-Alireza Jafari, University of Virginia (jrp5td@virginia.edu)
+Alireza Jafari, University of Virginia (jrp5td AT virginia.edu)
 
-Yang Yang, University of Virginia (xqg5sq@virginia.edu)
+Yang Yang, University of Virginia (xqg5sq AT virginia.edu)
 
 ## Using ``Fairify``
 
@@ -21,9 +21,9 @@ For this part, please check this [README](fairify/README.md) for detailed inform
 
 > For any problem contact:
 
-Yang Yang, University of Virginia (xqg5sq@virginia.edu)
+Yang Yang, University of Virginia (xqg5sq AT virginia.edu)
 
-Alireza Jafari, University of Virginia (jrp5td@virginia.edu)
+Alireza Jafari, University of Virginia (jrp5td AT virginia.edu)
 
 ## Credits
 
