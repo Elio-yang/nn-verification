@@ -242,6 +242,13 @@ pip install -r requirements.txt
 
 These steps are in this [script](build.sh), run it by ``./build.sh``.
 
+Also, the docker file containing all dependecies are here [dockerfile](./Dockerfile), build it using
+
+```
+docker build -t nnv .
+```
+
+
 ## Verify 
 
 Locate the verify scipts in [src](src/):
