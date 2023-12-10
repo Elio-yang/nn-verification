@@ -1,6 +1,6 @@
 # Neural Network Verification
 
-Github [link](https://github.com/Elio-yang/nn-verification).
+> Project for UVA CS6501: Software Engineering for Machine Learning
 
 ## Using ``α,β-CROWN``
 
