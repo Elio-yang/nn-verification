@@ -239,7 +239,6 @@ def load_bank():
     count = df.shape[0] - dropped.shape[0]
     print("Missing Data: {} rows removed.".format(count))
     df = dropped
-    columns = ['education=Assoc-acdm', 'education=Assoc-voc', 'education=Bachelors',]
     
     df['age'] = df['age'].apply(lambda x: np.float(x >= 25))
     
@@ -282,7 +281,6 @@ def load_bank():
 #    train, test  = train_test_split(df, test_size = 0.15, random_state = seed)
     X_train, X_test, y_train, y_test  = train_test_split(X, y, test_size = 0.15, random_state = seed)        
     return (df, X_train.to_numpy(), y_train.to_numpy().astype('int'), X_test.to_numpy(), y_test.to_numpy().astype('int'))
-
 
 def load_adult():
     #!/usr/bin/env python
@@ -399,16 +397,93 @@ def load_adult():
         
     return (df, X_train.to_numpy(), y_train.to_numpy().astype('int'), X_test.to_numpy(), y_test.to_numpy().astype('int'))
 
-
-# for new model and dataset
 def load_deposit():
-    pass
+    
+    file_path = '../../data/deposit/bank.csv'
 
-def load_avocado():
-    pass
+    column_names = ['age', 'job', 'marital', 'education', 'default', 'balance', 'housing', 'loan', 'contact',
+                    'day', 'month', 'duration', 'campaign', 'pdays', 'previous', 'poutcome', 'deposit']
+    na_values = ['unknown']
 
-def load_creditcard():
-    pass
+    df = pd.read_csv(file_path, sep=',', na_values=na_values)
+
+    ### Drop na values
+    dropped = df.dropna()
+    count = df.shape[0] - dropped.shape[0]
+    print("Missing Data: {} rows removed.".format(count))
+    df = dropped
+
+    df['age'] = df['age'].apply(lambda x: np.float(x >= 25))
+
+    ## Feature selection
+    # features_to_keep = []
+    # df = df[features_to_keep]
+
+    # Create a one-hot encoding of the categorical variables.
+    cat_feat = ['job', 'marital', 'education', 'default', 'housing', 'loan', 'contact', 'month', 'poutcome']
+    # df = pd.get_dummies(df, columns=cat_feat, prefix_sep='=')
+
+    for f in cat_feat:
+        label = LabelEncoder()
+        df[f] = label.fit_transform(df[f])
+
+    df = df[column_names]
+    label_name = 'deposit'
+    favorable_label = 1
+    unfavorable_label = 0
+    favorable_classes = ['yes']
+
+    pos = np.logical_or.reduce(np.equal.outer(favorable_classes, df[label_name].to_numpy()))
+    df.loc[pos, label_name] = favorable_label
+    df.loc[~pos, label_name] = unfavorable_label
+    df = df.round(0).astype(int)
+
+    X = df.drop(labels=[label_name], axis=1, inplace=False)
+    y = df[label_name]
+
+    seed = 42
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=seed)
+
+    return (df, X_train.to_numpy(), y_train.to_numpy().astype('int'), X_test.to_numpy(), y_test.to_numpy().astype('int'))
+
+def load_fraud():
+    file_path = '../../data/fraud/creditcard.csv'
+    
+    # Define column names
+    column_names = ["Time","V1","V2","V3","V4","V5","V6","V7","V8","V9","V10",
+                    "V11","V12","V13","V14","V15","V16","V17","V18","V19","V20",
+                    "V21","V22","V23","V24","V25","V26","V27","V28","Amount","Class"]
+
+    # Read the dataset
+    df = pd.read_csv(file_path, sep=',', names=column_names, header=None)
+
+    # Drop the "Time" column
+    df = df.drop(columns=["Time"])
+
+    # print the first line of data
+    # print(df.head())
+
+    # Convert "Class" to binary values
+    label_name = 'Class'
+    favorable_label = 1
+    favorable_classes = ['0']
+
+    # pos = np.logical_or.reduce(np.equal.outer(favorable_classes, df[label_name].to_numpy()))
+    # df.loc[pos, label_name] = favorable_label
+    # df.loc[~pos, label_name] = 1 - favorable_label  # Invert for the other class
+
+    # Convert to integer type
+    df = df.astype({'Class': int})
+
+    # Split the data into features (X) and labels (y)
+    X = df.drop(labels=[label_name], axis=1)
+    y = df[label_name]
+
+    # Set random seed for reproducibility
+    seed = 42
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=seed)
+
+    return (df, X_train.to_numpy().astype(np.float32), y_train.to_numpy().astype('int'), X_test.to_numpy().astype(np.float32), y_test.to_numpy().astype('int'))
 
 
 
@@ -610,6 +685,47 @@ def in_const_domain_bank(df, x, x_, ranges, PA):
 
     return props
 
+
+def in_const_domain_fraud(df, x, x_, ranges, PA):
+    label_name = 'Class'
+    dataframe = df.drop(labels = [label_name], axis=1, inplace=False)
+    #dataframe = df.drop(df.columns[len(df.columns)-1], axis=1, inplace=False)
+    props = []
+    
+    for col in dataframe:
+        index = dataframe.columns.get_loc(col)
+            
+        if(col in PA):
+            props.append(And(x[index] >= ranges[col][0], x[index] <= ranges[col][1]))
+            props.append(And(x_[index] >= ranges[col][0], x_[index] <= ranges[col][1]))            
+
+        else:
+             props.append(And(x[index] >= ranges[col][0], x[index] <= ranges[col][1]))
+             #props.append(And(x_[index] >= ranges[col][0], x_[index] <= ranges[col][1])) # this ones could be ommited
+
+    return props
+
+
+def in_const_domain_deposit(df, x, x_, ranges, PA):
+    label_name = 'deposit'
+    dataframe = df.drop(labels = [label_name], axis=1, inplace=False)
+    #dataframe = df.drop(df.columns[len(df.columns)-1], axis=1, inplace=False)
+    props = []
+    
+    for col in dataframe:
+        index = dataframe.columns.get_loc(col)
+            
+        if(col in PA):
+            props.append(And(x[index] >= ranges[col][0], x[index] <= ranges[col][1]))
+            props.append(And(x_[index] >= ranges[col][0], x_[index] <= ranges[col][1]))            
+
+        else:
+             props.append(And(x[index] >= ranges[col][0], x[index] <= ranges[col][1]))
+             #props.append(And(x_[index] >= ranges[col][0], x_[index] <= ranges[col][1])) # this ones could be ommited
+
+    return props
+
+
 def in_const_bank(df, x, var_name, op, rhs):
     label_name = 'y'
     dataframe = df.drop(labels = [label_name], axis=1, inplace=False)
@@ -637,6 +753,65 @@ def in_const_bank(df, x, var_name, op, rhs):
             else:
                 raise Exception('The operand is not defined!') 
     return props
+
+def in_const_fraud(df, x, var_name, op, rhs):
+    label_name = 'Class'
+    dataframe = df.drop(labels = [label_name], axis=1, inplace=False)
+    props = []
+    for col in dataframe:
+        if col == var_name:
+            index = dataframe.columns.get_loc(col)
+            if(isinstance(rhs, int) or isinstance(rhs, float)):
+                right = rhs
+            else:
+                right = rhs[index]
+                
+            if(op == 'gt'):
+                props.append(x[index] > right)
+            elif(op == 'lt'):
+                props.append(x[index] < right)
+            elif(op == 'gte'):
+                props.append(x[index] >= right)
+            elif(op == 'lte'):
+                props.append(x[index] <= right)
+            elif(op == 'eq'):
+                props.append(x[index] == right)
+            elif(op == 'neq'):
+                props.append(x[index] != right)
+            else:
+                raise Exception('The operand is not defined!') 
+    return props
+
+
+
+def in_const_deposit(df, x, var_name, op, rhs):
+    label_name = 'deposit'
+    dataframe = df.drop(labels = [label_name], axis=1, inplace=False)
+    props = []
+    for col in dataframe:
+        if col == var_name:
+            index = dataframe.columns.get_loc(col)
+            if(isinstance(rhs, int) or isinstance(rhs, float)):
+                right = rhs
+            else:
+                right = rhs[index]
+                
+            if(op == 'gt'):
+                props.append(x[index] > right)
+            elif(op == 'lt'):
+                props.append(x[index] < right)
+            elif(op == 'gte'):
+                props.append(x[index] >= right)
+            elif(op == 'lte'):
+                props.append(x[index] <= right)
+            elif(op == 'eq'):
+                props.append(x[index] == right)
+            elif(op == 'neq'):
+                props.append(x[index] != right)
+            else:
+                raise Exception('The operand is not defined!') 
+    return props
+
 
 def in_const_german(df, x, var_name, op, rhs):
     label_name = 'credit'
@@ -761,6 +936,27 @@ def in_const_diff_bank(df, x, x_, var_name, threshold):
             index = dataframe.columns.get_loc(col)  
             props.append(z3Abs(x[index] - x_[index]) <= threshold)
     return props
+
+def in_const_diff_fraud(df, x, x_, var_name, threshold):
+    label_name = 'Class'
+    dataframe = df.drop(labels = [label_name], axis=1, inplace=False)
+    props = []
+    for col in dataframe:
+        if col == var_name:
+            index = dataframe.columns.get_loc(col)  
+            props.append(z3Abs(x[index] - x_[index]) <= threshold)
+    return props
+
+def in_const_diff_deposit(df, x, x_, var_name, threshold):
+    label_name = 'deposit'
+    dataframe = df.drop(labels = [label_name], axis=1, inplace=False)
+    props = []
+    for col in dataframe:
+        if col == var_name:
+            index = dataframe.columns.get_loc(col)  
+            props.append(z3Abs(x[index] - x_[index]) <= threshold)
+    return props
+
 
 def in_const_diff(df, x, x_, var_name, op, threshold):
     dataframe = df.drop(df.columns[len(df.columns)-1], axis=1, inplace=False)

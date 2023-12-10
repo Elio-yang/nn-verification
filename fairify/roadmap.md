@@ -1,9 +1,0 @@
-
-1. original AC models
-2. AC model with mix relu/tanh/softmax/...
-
-1. original BM models
-2. BM model with mix relu/tanh/softmax/...
-
-1. original GC models
-2. GC model with mix relu/tanh/softmax/...

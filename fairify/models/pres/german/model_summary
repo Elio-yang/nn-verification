@@ -1,0 +1,30 @@
+
+Model: GC-2.h5
+Model: /u/xqg5sq/workspace/nn-verification/fairify/models/pres/german/GC-2.h5
+Layer 1: dense_24 - Output Shape: (None, 100)
+Layer 2: dense_25 - Output Shape: (None, 1)
+
+Model: GC-3.h5
+Model: /u/xqg5sq/workspace/nn-verification/fairify/models/pres/german/GC-3.h5
+Layer 1: dense_6 - Output Shape: (None, 9)
+Layer 2: dense_7 - Output Shape: (None, 1)
+
+Model: GC-1.h5
+Model: /u/xqg5sq/workspace/nn-verification/fairify/models/pres/german/GC-1.h5
+Layer 1: dense_84 - Output Shape: (None, 50)
+Layer 2: dense_85 - Output Shape: (None, 1)
+
+Model: GC-4.h5
+Model: /u/xqg5sq/workspace/nn-verification/fairify/models/pres/german/GC-4.h5
+Layer 1: dense_21 - Output Shape: (None, 6)
+Layer 2: dense_22 - Output Shape: (None, 4)
+Layer 3: dense_23 - Output Shape: (None, 1)
+
+Model: GC-5.h5
+Model: /u/xqg5sq/workspace/nn-verification/fairify/models/pres/german/GC-5.h5
+Layer 1: dense - Output Shape: (None, 64)
+Layer 2: dense_1 - Output Shape: (None, 32)
+Layer 3: dense_2 - Output Shape: (None, 16)
+Layer 4: dense_3 - Output Shape: (None, 8)
+Layer 5: dense_4 - Output Shape: (None, 4)
+Layer 6: dense_5 - Output Shape: (None, 1)
