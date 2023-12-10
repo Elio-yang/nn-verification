@@ -220,6 +220,9 @@ Locate the verify scipts in [src](src/):
 9. Veridy Loan fairness on BM: [verify-bm-loan.py](src/BM/Verify-BM-loan.py)
 10. Verify V24 fairness on CF: [verify-cf-v24.py](src/CF/Verify-CF-v24.py)
 
+For running all works, using this [script](src/fairify.sh) by ``./fairify.sh``.
+
+
 Output will just be in the same directory, start with protected attribute. Detailed meaning of record in the output will be talked in the next section.
 
 You could modify the verify python file to test other ``protected attribute``. You can also change the verification ``timeout`` in each file to provide longer time searching and verifing.
