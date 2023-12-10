@@ -219,7 +219,7 @@ Notice: there isn't any specific requirement for system, only need a virtual env
 
 ```
 git clone https://github.com/Elio-yang/nn-verification
-cd nn-verification/
+cd nn-verification/fairify
 ``` 
 
 2. Run this on command line to create a virtual environment:
@@ -236,6 +236,8 @@ Run the following command to update pip on Python: `python3 -m pip install --upg
 ```
 pip install -r requirements.txt
 ```
+
+These steps are in this [script](build.sh), run it by ``./build.sh``.
 
 ## Verify 
 
