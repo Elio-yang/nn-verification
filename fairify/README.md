@@ -3,6 +3,13 @@
 * Sumon Biswas, Carnegie Mellon University (sumonb@cs.cmu.edu)
 * Hridesh Rajan, Iowa State University (hridesh@iastate.edu)
 
+# This Project 
+
+* Yang Yang, University of Virginia (xqg5sq@virginia.edu)
+* Alireza Jafari, University of Virginia (jrp5td@virginia.edu)
+
+For any problem, please contact Yang.
+
 ## Index
 > 1. [Models](models/)
 > 2. Datasets
@@ -252,6 +259,8 @@ And ``C1``, ``C2`` give you the counter-example:
 ``C2 = [51.  0.  8. 11.  6.  0.  0.  1.  0.  0. 19. 73. 39.]``
 
 In this case, C1[8]!=C2[8], but C1[!8]=C2[!8], but the network predict different result, showing unfair on attribute[8], in this case ``age``.
+
+For maore detailed explaination, check the paper.
 
 
 ### Cite the paper as
