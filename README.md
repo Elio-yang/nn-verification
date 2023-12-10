@@ -2,9 +2,10 @@
 
 ## Using ``α,β-CROWN``
 
-This part could be tested using online notebook, check the link [here](https://colab.research.google.com/drive/1Zn8KTXAbsBEpoAEsOXPAEqiaMmyO-vW0?usp=sharing).
+This part could be tested using online notebook, check the link [here](https://colab.research.google.com/drive/1Zn8KTXAbsBEpoAEsOXPAEqiaMmyO-vW0?usp=sharing). You could also check the local file [here](AB-CROWN-Report.ipynb). It's better to run this online.
 
-For any problem contact:
+
+> For any problem please contact:
 
 Alireza Jafari, University of Virginia (jrp5td@virginia.edu)
 
@@ -14,7 +15,7 @@ Yang Yang, University of Virginia (xqg5sq@virginia.edu)
 
 For this part, please check this [README](fairify/README.md) for detailed information.
 
-For any problem contact:
+> For any problem contact:
 
 Yang Yang, University of Virginia (xqg5sq@virginia.edu)
 
