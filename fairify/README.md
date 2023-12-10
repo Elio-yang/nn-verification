@@ -95,8 +95,8 @@ Pretrained-models could be find [here](models/adult/).
 | Model 8           | [D-R]*2-D-S      | 11              |
 | Model 9           | [D-R]*4-D-S      | 13              |
 | Model 10           | [D-R]*4-D-S      | 21              |
-| Model 11           | [D-R]*4-D-S      | 41              |
-| Model 12           | [D-R]*5-D-S      | 125              |
+| Model 11           | [D-R]*4-D-S      | 46            |
+| Model 12           | [D-R]*5-D-S      | 46              |
 
 D: Dense Layer
 
@@ -164,6 +164,38 @@ R: ReLU
 S: Sigmoid
 
 L: LeakyReLU
+
+- Creditcard Fraud
+
+Script for extracting model information could be find [here](models/fraud/model_sum.py).
+
+Model tensorflow definition could be find [here](src/CF/models.py).
+
+Model training scripts could be find [here](src/CF/train1.py).
+
+Pretrained-models could be find [here](models/fraud/).
+
+| Model Name        | Model Structure  | Number of Neurons |
+| ----------------- | ---------------- | ------------------ |
+| Model 1           | [D-R]*2-D-S     | 25              |
+| Model 2           | D-R-D-S         | 101              |
+| Model 3           | D-R-D-S         | 51              |
+| Model 4           | [D-R]*2-D-S      | 201              |
+| Model 5           | [D-R]*2-D-S      | 129              |
+| Model 6           | [D-R]*2-D-S      | 25              |
+| Model 7           | [D-R]*5-D-S      | 125              |
+| Model 8           | [D-R]*2-D-S      | 31              |
+| Model 9           | [D-R]*4-D-S      | 13              |
+| Model 10           | [D-R]*4-D-S      | 21              |
+| Model 11           | [D-R]*4-D-S      | 46              |
+| Model 12           | [D-R]*5-D-S      | 56              |
+
+D: Dense Layer
+
+R: ReLU
+
+S: Sigmoid
+
 
 ## NN Model in Z3 
 
