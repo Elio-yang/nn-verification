@@ -46,6 +46,17 @@ For any problem, please contact Yang.
 - Creditcard Fraud
 > "Time","V1","V2","V3","V4","V5","V6","V7","V8","V9","V10","V11","V12","V13","V14","V15","V16","V17","V18","V19","V20","V21","V22","V23","V24","V25","V26","V27","V28","Amount","Class"
 
+
+## Download Dataset
+
+Due to GitHub file size limitation, use this link to download the datasets used in this project:
+
+```
+wget https://www.cs.virginia.edu/~xqg5sq/data.zip && unzip data.zip
+```
+
+We have also modified the Dockerfile to support this.
+
 ## MLP Models
 
 - German Credit 

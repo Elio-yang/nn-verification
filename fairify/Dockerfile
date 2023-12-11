@@ -27,3 +27,8 @@ WORKDIR /home
 
 # Clone the repository from GitHub
 RUN git clone https://github.com/Elio-yang/nn-verification.git
+
+# Download datasets
+RUN wget https://www.cs.virginia.edu/~xqg5sq/data.zip && unzip data.zip
+
+RUN mv data/ /home/nn-verification/fairify/
