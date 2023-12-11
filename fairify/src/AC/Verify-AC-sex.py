@@ -20,10 +20,13 @@ from importlib import import_module
 df, X_train, y_train, X_test, y_test = load_adult_ac1()
 # X is the entire dataset, used for partitioning
 X = np.r_[X_train, X_test]
+
+
+
 # 13 features for an input
 single_input = X_test[0].reshape(1, 13)
 # used for debugging the data format
-print_metadata(df)
+# print_metadata(df)
 
 # model and output related parameters
 model_dir = '../../models/adult/'
@@ -93,7 +96,11 @@ for model_file in model_files:
     # load pretrained model
     model = load_model(model_dir + model_file)
 
+
     print('Model Summary:')
+
+    model_input_shape = model.input.shape
+    print('Input shape: ', model_input_shape)
     for layer in model.layers:
         print(layer.name, layer.output_shape)
     

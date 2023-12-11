@@ -55,7 +55,7 @@ Due to GitHub file size limitation, use this link to download the datasets used 
 wget https://www.cs.virginia.edu/~xqg5sq/data.zip && unzip data.zip
 ```
 
-We have also modified the Dockerfile to support this.
+We have also modified the Dockerfile to support this. 
 
 ## MLP Models
 

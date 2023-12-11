@@ -15,10 +15,12 @@ from models import model1, model2, model3, model4, model5, model6, model7, model
 
 def train_model(model_name,model_imp):
     # Load data
-    df, X_train, y_train, X_test, y_test = load_adult()
+    df, X_train, y_train, X_test, y_test = load_adult_ac1()
 
     # Get input dimension from the training data
     input_dim = X_train.shape[1]
+
+    print(f'Input dimension: {input_dim}')
 
     # Create and compile the model
     model = model_imp(input_dim)

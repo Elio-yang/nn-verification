@@ -238,17 +238,22 @@ for model_file in model_files:
             # d2 = inp2.astype(str).tolist()
             # d1 = np.asarray(inp1)
             # d2 = np.asarray(inp2)
-            d1 += '['
-            for elem in inp1:
-                d1 += str(elem) + ','
-            d1[:-1] = ']'
-            print(d1)
+            # d1 += '['
+            # for elem in inp1:
+            #     d1 += str(elem) + ','
+            # d1[:-1] = ']'
+            # print(d1)
             
-            d2 += '['
-            for elem in inp2:
-                d2 += str(elem) + ','
-            d2[:-1] = ']'
-            print(d2)
+            # d2 += '['
+            # for elem in inp2:
+            #     d2 += str(elem) + ','
+            # d2[:-1] = ']'
+            # print(d2)
+
+            d1 = np.asarray(inp1, dtype=np.float32)
+            d2 = np.asarray(inp2, dtype=np.float32)
+            print(inp1)
+            print(inp2)
 
             print(inp1)
             print(inp2)
